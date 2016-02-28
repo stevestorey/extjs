@@ -80,28 +80,17 @@
                                 <echo message="unzip archive and file files" />
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${destDir}">
                                     <patternset>
-                                        <exclude name="${upstream.directory}/docs/**" />
-                                        <exclude name="${upstream.directory}/builds/**" />
-                                        <exclude name="${upstream.directory}/examples/**" />
+                                        <include name="${upstream.directory}/L*" />
+                                        <include name="${upstream.directory}/*.js" />
+                                        <include name="${upstream.directory}/build/" />
+                                        <exclude name="${upstream.directory}/**/examples/" />
                                         <exclude name="${upstream.directory}/**/*-classic-sandbox*" />
-                                        <exclude name="${upstream.directory}/ext*rtl*.js" />
-                                        <exclude name="${upstream.directory}/ext*debug-w-comments.js" />
-                                        <exclude name="${upstream.directory}/**/*rtl.css" />
-                                        <exclude name="${upstream.directory}/**/*rtl-debug.css" />
+                                        <exclude name="${upstream.directory}/**/*-rtl*" />
                                     </patternset>
                                     <mapper>
                                         <!-- Strip leading directory off each path -->
                                         <!-- So "xxx/docs/index.html" becomes "docs/index.html" -->
                                         <cutdirsmapper dirs="1" />
-                                    </mapper>
-                                </unzip>
-                                <!-- Pickup examples/ux also and place in src/ux -->
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${destDir}/src">
-                                    <patternset>
-                                        <include name="${upstream.directory}/examples/ux/**" />
-                                    </patternset>
-                                    <mapper>
-                                        <cutdirsmapper dirs="2" />
                                     </mapper>
                                 </unzip>
                                 <echo message="unzip done" />
