@@ -1,3 +1,11 @@
 Ext JS WebJar
 
 More info: http://webjars.org
+
+Building:
+
+Simply run
+   mvn install
+
+Or, if you already have the ext-6.0.0-gpl.zip file downloaded, use
+   mvn install -Dupstream.url=file:///<directory-path-containing-zip-file/
